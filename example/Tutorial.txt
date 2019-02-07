@@ -1,0 +1,50 @@
+1. Bootstrap Spring boot application
+https://start.spring.io/
+Generate a MAVEN PROJECT with JAVA and Spring Boot 2.1.2
+
+Group 
+com.spring-boot-hibernate (change)
+Artifact 
+example (change)
+
+Dependencies
+WEB (add)
+
+Generate project and open in IDE.
+
+2. Look at pom.xml
+To add jpa dependency:
+
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+
+Add Connector dependency:
+H2 connector
+
+3. application.properties configurations:
+# create and drop tables and sequences, loads import.sql
+spring.jpa.hibernate.ddl-auto=create-drop
+# Oracle settings
+spring.datasource.url=jdbc:oracle:thin:@localhost:1522:orcl
+spring.datasource.username=HIBERNATE_TEST
+spring.datasource.password=HIBERNATE_TEST
+spring.datasource.driver.class=oracle.jdbc.driver.OracleDriver
+# logging
+logging.pattern.console=%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n
+logging.level.org.hibernate.SQL=debug
+
+4. Add initial db script:
+Our application would also look for import.sql in the classpath and execute it, if found.
+
+5. Create Entity
+
+6. Create Repository
+Each repository extends Spring CrudRepository, which provides a default implementation for the basic find, save, and delete methods — so we don’t care about defining implementation classes for them.
+
+7. Maybe Skip creation of Services (call the Repository directly)
+
+8. Application.java
+This is the entry point of our application.
+Test here the db connection with a simple read query.
