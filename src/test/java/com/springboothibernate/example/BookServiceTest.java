@@ -1,7 +1,7 @@
 package com.springboothibernate.example;
 
-import com.springboothibernate.example.controllers.BookController;
 import com.springboothibernate.example.models.Book;
+import com.springboothibernate.example.services.BookService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,14 +13,14 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class BookControllerTest {
+public class BookServiceTest {
 
     @Autowired
-    private BookController bookController;
+    private BookService bookService;
 
     @Test
     public void test() {
-        List<Book> books = bookController.list();
+        List<Book> books = bookService.list();
 
         Assert.assertEquals(books.size(), 3);
     }
